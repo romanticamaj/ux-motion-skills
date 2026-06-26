@@ -1,0 +1,20 @@
+{
+  "name": "ux-motion-skills",
+  "owner": {
+    "name": "Gary Hsieh",
+    "email": "romanticamaj@gmail.com"
+  },
+  "metadata": {
+    "description": "Practical UX motion skills for web & app — list/page transitions, mobile (Reanimated/SwiftUI/Compose), optimistic UI & loading patterns, and design→dev motion handoff, unified by one motion-token vocabulary."
+  },
+  "plugins": [
+    {
+      "name": "ux-motion-skills",
+      "source": ".",
+      "description": "Five UX-motion Agent Skills: motion-principles, web-ux-motion, app-ux-motion, designer-handoff, interaction-patterns.",
+      "version": "1.0.0",
+      "category": "design",
+      "tags": ["ux", "motion", "animation", "framer-motion", "view-transitions", "reanimated", "micro-interactions", "design-handoff"]
+    }
+  ]
+}

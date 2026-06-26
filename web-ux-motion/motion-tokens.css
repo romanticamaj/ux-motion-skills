@@ -1,0 +1,40 @@
+/* motion-tokens.css — one motion language for the whole product.
+ * Import globally. Reference var(--dur-*) / var(--ease-*) in CSS, and mirror the
+ * same cubic-bezier arrays in `motion` transition props so JS and CSS move identically.
+ * Copy a value from here rather than inventing a new one. */
+
+:root {
+  /* Durations — most UI motion lives in the 150–350ms band.
+     fast: exits / small toggles   base: enters / list items   slow: hero / shared-element morph */
+  --dur-fast: 0.16s;
+  --dur-base: 0.24s;
+  --dur-slow: 0.32s;
+
+  /* Easing — direction has meaning:
+     enter decelerates into place (ease-out); exit accelerates away (ease-in);
+     move-through uses standard ease-in-out; hero morph uses a pronounced ease-out. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* enters, list items, neighbor reflow */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);         /* exits / dismissals */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* cross-fades, move-through */
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1); /* hero / shared-element */
+
+  /* Springs (motion `type:"spring"`) — keep bounce low for utilitarian UI.
+     Use these as `transition={{ type: "spring", stiffness: 300, damping: 30 }}` etc. */
+  --spring-snappy: 300 30;  /* stiffness damping — buttons, toggles */
+  --spring-gentle: 200 26;  /* cards, sheets */
+}
+
+/* JS mirror (for reference — copy into `motion` transition props):
+ *   enter:  { duration: 0.24, ease: [0.22, 1, 0.36, 1] }
+ *   exit:   { duration: 0.16, ease: [0.4, 0, 1, 1] }
+ *   hero:   { duration: 0.32, ease: [0.16, 1, 0.3, 1] }
+ *   spring: { type: "spring", stiffness: 300, damping: 30 }
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+}
