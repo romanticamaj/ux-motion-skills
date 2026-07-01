@@ -2,9 +2,10 @@
     prompt: "spec this modal so it feels premium and snappy"
   assert:
     - { type: icontains-all, value: ["--dur-", "--ease-", "reduced-motion"] }
-    - { type: not-icontains, value: "linear" }
+    # NOTE: no `not-icontains linear` — it false-matches linear-gradient/non-linear;
+    # "don't suggest linear easing" is covered semantically by the llm-rubric below.
     - type: llm-rubric
-      value: "Produces a filled-in spec using the canonical tokens (--dur-*, --ease-*, spring.*) rather than adjectives; scale up from ~0.96, exit faster than enter, transform/opacity only, explicit reduced-motion line."
+      value: "Produces a filled-in spec using the canonical tokens (--dur-*, --ease-*, spring.*) rather than adjectives; scale up from ~0.96, exit faster than enter, transform/opacity only, explicit reduced-motion line; does not recommend linear easing."
 - vars:
     prompt: "hand off the animation for a long list to engineering"
   assert:

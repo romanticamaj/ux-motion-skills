@@ -31,11 +31,20 @@ try {
   // promptfoo's `exports` blocks its package.json subpath, so resolve the package
   // main ("." is exported) and use the sibling CLI entrypoint beside it.
   const entry = join(dirname(require.resolve("promptfoo")), "entrypoint.js");
-  execFileSync(
-    process.execPath,
-    [entry, "eval", "-c", join(evalDir, "promptfooconfig.yaml"), "-o", join(evalDir, "results.json")],
-    { stdio: "inherit", cwd: repo },
-  );
+  const resultsPath = join(evalDir, "results.json");
+  try {
+    execFileSync(
+      process.execPath,
+      [entry, "eval", "-c", join(evalDir, "promptfooconfig.yaml"), "-o", resultsPath],
+      { stdio: "inherit", cwd: repo },
+    );
+  } catch (err) {
+    // Promptfoo exits non-zero whenever ANY case fails — which is expected here, since
+    // baseline (no skills) is meant to fail cases the skills should pass. The delta gate,
+    // not Promptfoo's exit code, is the arbiter. Only abort if no results were written.
+    if (!existsSync(resultsPath)) throw err;
+    console.log("\n(Promptfoo reported case failures — expected; the delta gate decides.)\n");
+  }
 
   // 4. Gate on the treatment-beats-baseline delta.
   execFileSync(process.execPath, [join(evalDir, "delta.js")], { stdio: "inherit", cwd: repo });
