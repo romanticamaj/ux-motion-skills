@@ -1,0 +1,13 @@
+- vars:
+    prompt: "make this list smoother"
+  assert:
+    - { type: icontains-all, value: ["motion/react", "AnimatePresence", "popLayout", "prefers-reduced-motion"] }
+    - { type: not-icontains, value: "framer-motion" }
+    - type: llm-rubric
+      value: "Uses the `motion` library (import from motion/react), NOT framer-motion; wraps the list in AnimatePresence with mode popLayout and layout; honors prefers-reduced-motion with a real fallback; animates only transform/opacity; enter uses ease-out and exit is faster."
+- vars:
+    prompt: "the page change feels harsh, fix it"
+  assert:
+    - { type: icontains-all, value: ["startViewTransition", "prefers-reduced-motion"] }
+    - type: llm-rubric
+      value: "Recommends the native View Transitions API (document.startViewTransition or router opt-in), NOT a JS AnimatePresence route wrapper; includes a reduced-motion guard."

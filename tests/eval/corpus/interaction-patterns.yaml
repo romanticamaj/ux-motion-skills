@@ -1,0 +1,12 @@
+- vars:
+    prompt: "the like button feels laggy"
+  assert:
+    - { type: icontains-all, value: ["useOptimistic", "rollback"] }
+    - type: llm-rubric
+      value: "Recommends optimistic UI that updates the same frame with a rollback path (useOptimistic or TanStack onMutate snapshot); mentions coalescing rapid toggles."
+- vars:
+    prompt: "loading shows a spinner then everything jumps"
+  assert:
+    - { type: icontains-all, value: ["skeleton", "aspect-ratio", "prefers-reduced-motion"] }
+    - type: llm-rubric
+      value: "Recommends a layout-accurate skeleton reserving space (aspect-ratio), a flash-guard (>~180ms to show, ~300-500ms min), keepPreviousData on refetch, and a reduced-motion branch on the shimmer."
