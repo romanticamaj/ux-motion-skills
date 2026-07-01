@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 *.log
 tests/eval/**/results.json
+tests/eval/fixtures/config-with-skills/skills/
+tests/eval/fixtures/**/.credentials.json
