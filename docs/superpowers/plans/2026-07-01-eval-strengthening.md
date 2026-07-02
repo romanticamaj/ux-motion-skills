@@ -43,6 +43,20 @@ adversarial (the real fix), then defer pairwise+multisample until the corpus dis
   (`0.16s/0.24s/0.32s`, the specific cubic-beziers, `300/30`, `200/26`). This is what a base model
   can't guess and the skills uniquely provide.
 
+## Phase 2 outcome (2026-07-01)
+
+Adversarial corpus flipped the eval to a real PASS: **baseline 0.683 vs treatment 0.950,
+delta +0.267**. Driven by three genuine discriminators — bottom sheet (0.00→1.00,
+`@gorhom/bottom-sheet`), like button (0.00→1.00, `useOptimistic`), loading feed
+(0.33→1.00, skeleton + `aspect-ratio`). Findings:
+- Baseline Opus 4.8 already knows several things (View Transitions API, Reanimated
+  `LinearTransition`, and even the exact `cubic-bezier(0.22, 1, 0.36, 1)` / 240ms values), so
+  token-fidelity prompts did **not** discriminate — the pack's value is concentrated in
+  library/pattern defaults a no-skill agent gets weaker on.
+- The framer-motion case sits at 0.50/0.50 because `not-icontains "framer-motion"` fires on the
+  corrective "not framer-motion" phrasing (balanced across providers). Refine later to match an
+  `import ... "framer-motion"` line instead of the bare word.
+
 ## Phase 3 — Rigor (deferred until Phase 2 discriminates)
 
 - Pairwise judging (`select-best`) instead of independent rubric scoring (sensitive near the ceiling).
