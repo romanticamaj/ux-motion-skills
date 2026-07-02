@@ -38,3 +38,28 @@ describe.each(SKILLS)("inline easing values: %s", (folder) => {
     });
   });
 });
+
+// Inline `duration: <seconds>` literals in transition props must be a canonical duration
+// (or 0, the reduced-motion value). Named refs like `dur.base` carry no numeric literal.
+const CANON_MS = new Set<number>([0, ...Object.values(canonical.durations ?? {}).filter((n): n is number => typeof n === "number")]);
+
+function inlineDurations(md: string): { raw: string; ms: number }[] {
+  const code = extractCodeBlocks(md).map((b) => b.code).join("\n");
+  return [...code.matchAll(/duration:\s*(\d*\.?\d+)/g)].map((m) => ({
+    raw: m[0],
+    ms: Math.round(Number(m[1]) * 1000),
+  }));
+}
+
+describe.each(SKILLS)("inline duration values: %s", (folder) => {
+  const durations = inlineDurations(readSkill(folder));
+  if (durations.length === 0) {
+    it("has no inline durations to check", () => expect(durations).toEqual([]));
+    return;
+  }
+  durations.forEach(({ raw, ms }, i) => {
+    it(`inline duration #${i} ${raw} is canonical (or 0)`, () => {
+      expect(CANON_MS.has(ms)).toBe(true);
+    });
+  });
+});
