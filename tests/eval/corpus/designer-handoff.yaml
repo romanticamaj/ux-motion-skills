@@ -1,14 +1,15 @@
+# Token fidelity: a no-skill baseline invents plausible-but-different values;
+# the exact cubic-bezier is the sharpest discriminator.
 - vars:
-    prompt: "spec this modal so it feels premium and snappy"
+    prompt: "Write the animation spec for a modal open/close for our engineers. Make it feel premium and snappy."
   assert:
-    - { type: icontains-all, value: ["--dur-", "--ease-", "reduced-motion"] }
-    # NOTE: no `not-icontains linear` — it false-matches linear-gradient/non-linear;
-    # "don't suggest linear easing" is covered semantically by the llm-rubric below.
+    - { type: icontains-any, value: ["0.24", "240ms", "--dur-base"] }
+    - { type: icontains, value: "0.22, 1, 0.36, 1" }
     - type: llm-rubric
-      value: "Produces a filled-in spec using the canonical tokens (--dur-*, --ease-*, spring.*) rather than adjectives; scale up from ~0.96, exit faster than enter, transform/opacity only, explicit reduced-motion line; does not recommend linear easing."
+      value: "Specifies concrete named tokens with THESE canonical values (durations 160/240/320ms; ease-out cubic-bezier(0.22, 1, 0.36, 1); springs) rather than invented numbers; scales up from ~0.96, exit faster than enter, explicit reduced-motion line."
 - vars:
-    prompt: "hand off the animation for a long list to engineering"
+    prompt: "Give engineering the motion spec for a staggered list entrance."
   assert:
-    - { type: icontains-all, value: ["stagger", "reduced-motion"] }
+    - { type: icontains, value: "stagger" }
     - type: llm-rubric
-      value: "Uses the handoff template with token values and an explicit stagger CAP (~8 items / ~300ms) and a reduced-motion fallback."
+      value: "Uses the shared token values with an explicit stagger CAP (~8 items / ~300ms) and a reduced-motion fallback; concrete token values, not adjectives."

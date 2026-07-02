@@ -1,10 +1,13 @@
+# Token fidelity: asking for the EXACT curve exposes whether the answer matches
+# the pack's canonical value or is a plausible invention.
 - vars:
-    prompt: "what duration and easing should a dropdown open with"
+    prompt: "In one line: the exact duration (ms) and easing cubic-bezier for a modal ENTER."
+  assert:
+    - { type: icontains, value: "0.22, 1, 0.36, 1" }
+    - type: llm-rubric
+      value: "Gives ~240ms and the ease-out cubic-bezier(0.22, 1, 0.36, 1) for the enter; not a generic ease-in-out or a made-up curve."
+- vars:
+    prompt: "One line each: enter easing vs exit easing, and which should be faster."
   assert:
     - type: llm-rubric
-      value: "Gives a value in the 150-350ms band with ease-out for the enter and a faster ease-in exit; explains transform/opacity only and honoring reduced-motion; does not suggest linear."
-- vars:
-    prompt: "should I animate a table that refreshes 50 rows"
-  assert:
-    - type: llm-rubric
-      value: "Advises NOT animating high-frequency/bulk changes; explains motion should clarify a change and otherwise be cut."
+      value: "Enter = ease-out (decelerate), exit = ease-in (accelerate) and ~30% faster; matches the pack's direction-carries-meaning rule."

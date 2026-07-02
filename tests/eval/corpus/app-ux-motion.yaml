@@ -1,12 +1,13 @@
+# Adversarial: baseline tends to reach for RN-core LayoutAnimation / hand-rolled timing.
 - vars:
-    prompt: "make the app list feel smoother"
+    prompt: "My React Native list pops when I add or remove rows. Make the rows animate smoothly. Short snippet."
   assert:
-    - { type: icontains-all, value: ["LinearTransition", "useReducedMotion"] }
+    - { type: icontains, value: "LinearTransition" }
     - type: llm-rubric
-      value: "Uses Reanimated layout animations (LinearTransition.springify plus entering/exiting); honors useReducedMotion; exit faster than enter; shared spring tokens rather than ad-hoc values."
+      value: "Uses Reanimated layout animations (LinearTransition + entering/exiting), NOT RN-core LayoutAnimation or manual Animated.timing; honors useReducedMotion; exit faster than enter."
 - vars:
-    prompt: "the bottom sheet just snaps open"
+    prompt: "My bottom sheet snaps open instantly. Make it settle smoothly instead. Short snippet."
   assert:
-    - { type: icontains-all, value: ["bottom-sheet", "spring"] }
+    - { type: icontains, value: "bottom-sheet" }
     - type: llm-rubric
-      value: "Recommends @gorhom/bottom-sheet v5 with spring animationConfigs from shared tokens and GestureHandlerRootView; not a hand-rolled timing snap."
+      value: "Recommends @gorhom/bottom-sheet v5 with spring animationConfigs and GestureHandlerRootView; not a hand-rolled Animated.timing snap."

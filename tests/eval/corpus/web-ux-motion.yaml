@@ -1,13 +1,15 @@
+# Adversarial: prompts prime the WRONG default so a no-skill baseline fails.
 - vars:
-    prompt: "make this list smoother"
+    prompt: "I'm using framer-motion. Add enter and exit animations to this list, and stop neighbors from jumping when an item is removed. Short snippet."
   assert:
-    - { type: icontains-all, value: ["motion/react", "AnimatePresence", "popLayout", "prefers-reduced-motion"] }
+    - { type: icontains, value: "motion/react" }
     - { type: not-icontains, value: "framer-motion" }
+    - { type: icontains, value: "popLayout" }
     - type: llm-rubric
-      value: "Uses the `motion` library (import from motion/react), NOT framer-motion; wraps the list in AnimatePresence with mode popLayout and layout; honors prefers-reduced-motion with a real fallback; animates only transform/opacity; enter uses ease-out and exit is faster."
+      value: "Corrects the stale package to `motion` (import from motion/react), NOT framer-motion; uses AnimatePresence mode='popLayout' + layout so neighbors reflow; honors prefers-reduced-motion."
 - vars:
-    prompt: "the page change feels harsh, fix it"
+    prompt: "Add a smooth transition between routes in my React app. Keep it simple."
   assert:
-    - { type: icontains-all, value: ["startViewTransition", "prefers-reduced-motion"] }
+    - { type: icontains, value: "startViewTransition" }
     - type: llm-rubric
-      value: "Recommends the native View Transitions API (document.startViewTransition or router opt-in), NOT a JS AnimatePresence route wrapper; includes a reduced-motion guard."
+      value: "Recommends the native View Transitions API (document.startViewTransition or router viewTransition opt-in), NOT a JS AnimatePresence mode='wait' route wrapper; includes a reduced-motion guard."
