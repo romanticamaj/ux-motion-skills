@@ -63,7 +63,7 @@ export function AnimatedList({ items }: { items: Item[] }) {
             initial={{ opacity: 0, height: 0, scale: 0.96 }}
             animate={{ opacity: 1, height: "auto", scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.96 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }} // = var(--ease-out)
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }} // = var(--dur-base) + var(--ease-out)
             className="list-item"
           >
             {item.label}
@@ -150,7 +150,7 @@ has a reduced-motion branch. In components, gate with `motion`'s hook:
 ```tsx
 import { useReducedMotion } from "motion/react";
 const reduce = useReducedMotion();
-// reduce ? { duration: 0 } : { duration: 0.22, ease: [0.22, 1, 0.36, 1] }
+// reduce ? { duration: 0 } : { duration: 0.24, ease: [0.22, 1, 0.36, 1] }
 ```
 
 Fallback = instant state change or a tiny opacity fade. Never a slide/scale/morph.
