@@ -40,6 +40,8 @@ each row is tagged honestly:
 |-------|-----|---------------|--------|
 | claudedesignskills | 🎯 | Three.js / R3F / GSAP-ScrollTrigger / Babylon / Motion / Lottie collection | [freshtechbro/claudedesignskills](https://github.com/freshtechbro/claudedesignskills) |
 | Paper Shaders | 🎯 | Zero-dependency canvas shaders — animated backgrounds, textures, masked effects | [paper-design/shaders](https://github.com/paper-design/shaders) |
+| Lottie (diffusionstudio) | 🎯 | Generate production-ready Lottie / dotLottie animations | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie) |
+| threejs-skills | 🎯 | Three.js scene setup, materials, animation patterns | [cloudai-x/threejs-skills](https://github.com/cloudai-x/threejs-skills) |
 
 ## Design judgment / anti-slop
 
@@ -69,12 +71,26 @@ each row is tagged honestly:
 |-------|-----|---------------|--------|
 | Huashu Design | 🎯 | HTML-native skill — prototypes, slides, animations, design reviews | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design) |
 
-## Design tokens & handoff
+## Design tokens & design systems
 
-_(scout's queue — verify canonical sources before listing)_
+| Skill | Tag | What it's for | Source |
+|-------|-----|---------------|--------|
+| design-tokens-skill | 🎯 | Working with design tokens in DTCG format | [ilikescience/design-tokens-skill](https://github.com/ilikescience/design-tokens-skill) |
+| ux-ui-agent-skills | 🎯 | DTCG tokens (3-tier) + 42 components + WCAG 2.2 + 138 design systems | [plugin87/ux-ui-agent-skills](https://github.com/plugin87/ux-ui-agent-skills) |
+| design-system-ops | 🎯 | The ops work that keeps a design system alive | [murphytrueman/design-system-ops](https://github.com/murphytrueman/design-system-ops) |
 
-- **Design Token Architect** — global/alias/component token taxonomy
-- **Claude Design** (handoff) — reads your codebase's tokens/Radix/Tailwind and emits a build spec
+## Design → code / Figma handoff
+
+| Skill | Tag | What it's for | Source |
+|-------|-----|---------------|--------|
+| claude2figma | 🎯 | Enforcement layer — keeps AI on your design-system rails: tokens bound, components linked, on-spec | [senlindesign/claude2figma](https://github.com/senlindesign/claude2figma) |
+| figma-skill | 🎯 | Universal Figma→code — browse, extract tokens, generate for 7 frameworks | [nafiurrahmanniloy/figma-skill](https://github.com/nafiurrahmanniloy/figma-skill) |
+| claude-code-design-skills | ⚖️ | Figma-to-code production workflow | [scoobynko/claude-code-design-skills](https://github.com/scoobynko/claude-code-design-skills) |
+
+## Scout's queue (unverified sources)
+
+- **Frontend UI Animator** — React motion auditing, staggered/scroll reveals _(no canonical repo confirmed)_
+- **Web Design Guidelines** (Vercel) — audits UI against 100+ a11y/perf/UX rules _(confirm canonical repo)_
 
 ## Meta collections (worth mining for the scout)
 
