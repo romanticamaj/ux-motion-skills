@@ -1,20 +1,20 @@
 {
-  "name": "ux-motion-skills",
+  "name": "awesome-claude-skills",
   "owner": {
     "name": "Gary Hsieh",
     "email": "romanticamaj@gmail.com"
   },
   "metadata": {
-    "description": "Practical UX motion skills for web & app — list/page transitions, mobile (Reanimated/SwiftUI/Compose), optimistic UI & loading patterns, and design→dev motion handoff, unified by one motion-token vocabulary."
+    "description": "A curated collection of differentiated Claude Code / Agent Skills, plus skill-scout — a skill that researches and appends new finds to the list."
   },
   "plugins": [
     {
-      "name": "ux-motion-skills",
+      "name": "skill-scout",
       "source": ".",
-      "description": "Five UX-motion Agent Skills: motion-principles, web-ux-motion, app-ux-motion, designer-handoff, interaction-patterns.",
+      "description": "Researches the web for Claude skills worth listing, filters against a quality bar, dedupes, and appends survivors to the curated README.",
       "version": "1.0.0",
-      "category": "design",
-      "tags": ["ux", "motion", "animation", "framer-motion", "view-transitions", "reanimated", "micro-interactions", "design-handoff"]
+      "category": "productivity",
+      "tags": ["skills", "curation", "research", "awesome-list", "meta"]
     }
   ]
 }
