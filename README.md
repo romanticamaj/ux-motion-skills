@@ -87,6 +87,13 @@ each row is tagged honestly:
 | figma-skill | 🎯 | Universal Figma→code — browse, extract tokens, generate for 7 frameworks | [nafiurrahmanniloy/figma-skill](https://github.com/nafiurrahmanniloy/figma-skill) |
 | claude-code-design-skills | ⚖️ | Figma-to-code production workflow | [scoobynko/claude-code-design-skills](https://github.com/scoobynko/claude-code-design-skills) |
 
+## Motion principles / taste
+
+| Skill | Tag | What it's for | Source |
+|-------|-----|---------------|--------|
+| motion-design-skill | 🏛 | Official (LottieFiles) — universal motion principles (timing, easing, choreography) for any animation system | [lottiefiles/motion-design-skill](https://github.com/lottiefiles/motion-design-skill) |
+| design-motion-principles | 🎯 | Two modes — build with purposeful motion, or audit existing animations; distilled from Emil Kowalski / Jakub Krehel / Jhey Tompkins | [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) |
+
 ## Scout's queue (unverified sources)
 
 - **Frontend UI Animator** — React motion auditing, staggered/scroll reveals _(no canonical repo confirmed)_
@@ -95,6 +102,8 @@ each row is tagged honestly:
 ## Meta collections (worth mining for the scout)
 
 - [wilwaldon/Claude-Code-Frontend-Design-Toolkit](https://github.com/wilwaldon/Claude-Code-Frontend-Design-Toolkit) — skills, plugins, MCP, CLAUDE.md tricks for better frontends
+- [rohitg00/awesome-claude-design](https://github.com/rohitg00/awesome-claude-design) — DESIGN.md prompts by aesthetic family, skills, video teardowns
+- [travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — general curated Claude skills list (mine for design/motion entries)
 - [maxbogo/awesome-ai-tools-for-ui](https://github.com/maxbogo/awesome-ai-tools-for-ui) — broad AI-for-UI list (design subsection)
 - [42 Claude Design Skills That Kill AI Slop — Novitckii](https://novitckii.com/resources/claude-design-skills/)
 - [Best Claude Code Skills 2026 — Firecrawl](https://www.firecrawl.dev/blog/best-claude-code-skills)
