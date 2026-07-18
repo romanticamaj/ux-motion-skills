@@ -4,83 +4,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A pack of five **Agent Skills** (no application code) that make a coding agent ship professional
-UX motion on terse requests. Each skill is a folder with a `SKILL.md`; the agent auto-triggers it
-from the `description` in the YAML frontmatter. There is **no build, test, lint, or run step** —
-the deliverable is the prose, recipes, and token values inside the `SKILL.md` files. "Correctness"
-is verified by re-running the RED test (see Methodology) by hand, not by a test runner.
+A **curated collection of Claude Code / Agent Skills** — a personal, opinionated shelf of skills
+worth using, kept in `README.md`. There is **no application code**, build, test, or run step. The
+deliverable is the curated list and the one skill that maintains it.
 
-Distributed as a Claude Code plugin via `.claude-plugin/marketplace.json`.
+## Structure
 
-## The architecture that spans files: one motion-token vocabulary
+- `README.md` — the curated list itself: categorized tables (`| Skill | What it's for | Source |`),
+  a "Leads to triage" queue, and the quality bar for inclusion.
+- `skill-scout/SKILL.md` — the only skill here. It researches new skills (web search + fetch),
+  filters against the quality bar, dedupes against the README, and appends survivors. Distributed
+  via `.claude-plugin/marketplace.json`.
 
-The entire point of the pack is that **design, web, and app all reference the SAME named tokens
-with the SAME values**. This is the invariant to protect. The canonical values appear in four
-places that MUST agree:
+## The one invariant: the quality bar
 
-- `web-ux-motion/motion-tokens.css` — the CSS source of truth (`--dur-*`, `--ease-*`, springs)
-- `app-ux-motion/SKILL.md` — an inline `motion-tokens.ts` (`spring.snappy/gentle`, `dur.*`)
-- `designer-handoff/SKILL.md` — the canonical-tokens table designers fill templates with
-- `motion-principles/SKILL.md` — the duration/easing/spring tables behind the values
+The list's value is **differentiation, not coverage**. A skill earns a row only if it clears at
+least one bar (see README + `skill-scout/SKILL.md` — keep the two copies in sync):
 
-Canonical values (changing any one means updating all four, plus the JS-mirror comment block in
-`motion-tokens.css` and any inline `transition={{...}}` examples that hard-code the cubic-beziers):
+1. Official / library-author, 2. Proprietary or live data, 3. Enforcement (encodes + gates on
+specific constraints), 4. Genuinely non-obvious depth.
 
-| Token | Value |
-|-------|-------|
-| `--dur-fast` | 160ms (0.16s) — exits/dismissals |
-| `--dur-base` | 240ms (0.24s) — enters/list items/modals |
-| `--dur-slow` | 320ms (0.32s) — hero/shared-element |
-| `--ease-out` | `cubic-bezier(0.22, 1, 0.36, 1)` — entrances |
-| `--ease-in` | `cubic-bezier(0.4, 0, 1, 1)` — exits |
-| `--ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` — cross-fade |
-| `--ease-emphasized` | `cubic-bezier(0.16, 1, 0.3, 1)` — hero morph |
-| `spring.snappy` | stiffness 300 / damping 30 |
-| `spring.gentle` | stiffness 200 / damping 26 |
+Skills whose only value is reciting best practices the base model already follows do **not** belong
+— they're on a depreciating curve as models improve. When editing the list or the scout, protect
+this bar; padding the list with redundant entries is the failure mode to avoid.
 
-If a recipe hard-codes a number (e.g. `transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}`),
-it should carry a comment tying it back to the token, and it must not drift from the table above.
+## When editing
 
-## Skill dependency structure
+- Adding entries is a **research task** — prefer running the `skill-scout` skill over hand-editing,
+  so finds get verified (real source URLs, not aggregators or invented links) and judged against the bar.
+- Keep annotations honest and specific ("official, from the library authors" / "overlaps the base
+  model — borderline"). Trustworthy curation is the whole point.
+- Match the existing README table format; move verified items out of "Leads to triage".
 
-`motion-principles` is the framework-agnostic foundation (values + when-NOT-to-animate). The other
-four cite it as **REQUIRED BACKGROUND** rather than re-deriving values:
+## History
 
-- `web-ux-motion` (React/web: `motion` lib, View Transitions API) → cites motion-principles
-- `app-ux-motion` (RN Reanimated/Gesture, + SwiftUI/Compose notes) → cites motion-principles
-- `interaction-patterns` (optimistic UI, skeletons, empty/error) → cites motion-principles + the two above
-- `designer-handoff` (intent → spec in the shared tokens) → binds to the same token table
-
-When editing, keep this layering: values and judgment live in `motion-principles`; the
-implementation skills give recipes and point back to it. Don't duplicate value rationale across skills.
-
-## House style enforced by every implementation skill
-
-These recurring "REQUIRED DEFAULTS" are the pack's reason to exist — they're the defaults a no-skill
-agent drops on terse requests. Preserve them when editing:
-
-- Web library is **`motion`** (`import from "motion/react"`), never the old `framer-motion` name.
-- Web list enter/exit/reorder uses `<AnimatePresence mode="popLayout">` + `layout`; web page
-  transitions use the native **View Transitions API**, not JS route wrappers.
-- App lists use Reanimated `LinearTransition.springify()` + `entering`/`exiting`; nav uses native-stack.
-- **`prefers-reduced-motion` always has a real fallback** (instant or opacity-only) — never optional.
-- **Enter = ease-out; exit = ease-in and ~30% faster.** Animate **only `transform`/`opacity`**
-  (the `height:auto` list collapse is the one allowed exception).
-
-## SKILL.md conventions
-
-- Frontmatter is exactly `name` (kebab-case, matches folder) and `description` (when-to-use,
-  written to auto-trigger on real/terse user phrasings — keep example phrasings in it).
-- Each implementation skill ends with a "Common mistakes" table (mistake → fix). Keep that shape.
-- The README's "Related & superior skills" section deliberately **defers** to stronger external
-  tools (Motion AI Kit, GSAP skills, Vercel's web-animation-design). When editing scope, stay in
-  the pack's lane (mobile, interaction patterns, designer handoff, the unified token system) rather
-  than re-deriving content those tools own.
-
-## Methodology (TDD-for-skills)
-
-Built via `superpowers:writing-skills`: RED = capture how a no-skill agent answers a real terse
-request and record the gaps; GREEN = write defaults/recipes closing exactly those gaps; REFACTOR =
-re-test until a one-line request still hits the bar. When changing a skill, re-run its RED scenario
-(the failure it was written to prevent, summarized in the README "Why this exists" section) rather
-than assuming the edit is safe.
+This repo previously held a pack of UX-motion skills (five `SKILL.md` folders + a motion-token
+system + a Vitest/Promptfoo test suite). That content was retired: the base model already covers it
+and stronger tools own the differentiated lanes. It remains in git history if needed.

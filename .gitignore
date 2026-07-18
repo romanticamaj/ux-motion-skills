@@ -1,9 +1,3 @@
 node_modules/
 .DS_Store
 *.log
-tests/eval/**/results.json
-# fixture config dirs are runtime/generated (skills, credentials, Claude Code state) — track only .keep
-tests/eval/fixtures/config-baseline/*
-tests/eval/fixtures/config-with-skills/*
-!tests/eval/fixtures/config-baseline/.keep
-!tests/eval/fixtures/config-with-skills/.keep
