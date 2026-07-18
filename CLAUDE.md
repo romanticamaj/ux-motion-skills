@@ -16,14 +16,14 @@ breadth. Keep out-of-lane skills (testing, MCP, data, etc.) off the list.
 
 - `README.md` — the curated list itself: categorized tables (`| Skill | What it's for | Source |`),
   a "Leads to triage" queue, and the quality bar for inclusion.
-- `skill-scout/SKILL.md` — the only skill here. It researches new skills (web search + fetch),
-  filters against the quality bar, dedupes against the README, and appends survivors. Distributed
-  via `.claude-plugin/marketplace.json`.
+- `.claude/skills/skill-scout/SKILL.md` — a **project skill** (auto-active when working in this
+  repo, committed with it). It researches new skills (web search + fetch), filters against the
+  quality bar, dedupes against the README, and appends survivors.
 
 ## The one invariant: the quality bar
 
 The list's value is **differentiation, not coverage**. A skill earns a row only if it clears at
-least one bar (see README + `skill-scout/SKILL.md` — keep the two copies in sync):
+least one bar (stated in both README and `.claude/skills/skill-scout/SKILL.md` — keep them in sync):
 
 1. Official / library-author, 2. Proprietary or live data, 3. Enforcement (encodes + gates on
 specific constraints), 4. Genuinely non-obvious depth.

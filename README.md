@@ -5,7 +5,7 @@ one vertical, done thoroughly. Broad "AI-for-UI" lists (e.g. [maxbogo/awesome-ai
 carry a shallow design subsection (~8 skills) across many categories; this repo does *only* motion &
 design, so it goes deeper — full sub-taxonomy, honest annotations, and a differentiation note per row.
 
-Maintained semi-automatically by [`skill-scout`](./skill-scout/SKILL.md): it web-researches motion/
+Maintained semi-automatically by [`skill-scout`](./.claude/skills/skill-scout/SKILL.md): it web-researches motion/
 design skills, dedupes against this list, and appends survivors. Run it to top up.
 
 ## How to read the annotations
@@ -86,7 +86,7 @@ _(scout's queue — verify canonical sources before listing)_
 ## How this repo is maintained
 
 A curation repo scoped to **motion & design skills only** — no application code. Adding entries is a
-research task, so it's driven by [`skill-scout`](./skill-scout/SKILL.md), which verifies real
+research task, so it's driven by [`skill-scout`](./.claude/skills/skill-scout/SKILL.md), which verifies real
 sources and dedupes before appending.
 
 <sub>History note: this repo previously shipped its own UX-motion skill pack. That proved redundant
