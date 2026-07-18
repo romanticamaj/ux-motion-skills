@@ -1,16 +1,18 @@
 ---
 name: skill-scout
-description: Use when the user wants to find new Claude Code / Agent Skills and add them to this repo's curated README — e.g. "scout for skills", "find new claude skills", "update the skill list", "add more to the collection", or naming a niche to hunt in ("scout motion skills", "any good MCP skills?"). Researches the web, filters against a quality bar, dedupes against the existing list, and appends the survivors.
+description: Use when the user wants to find new Claude Code / Agent Skills for MOTION, ANIMATION, or UI DESIGN and add them to this repo's curated README — e.g. "scout for motion skills", "find new animation/design skills", "update the skill list", "add more to the collection". Researches the web, filters against a quality bar, dedupes against the existing list, and appends the survivors. This repo is scoped to motion & design only — skip skills outside that lane.
 ---
 
 # Skill Scout
 
 ## Overview
 
-Keep this repo's curated `README.md` fresh. When invoked, go find Claude skills worth listing,
-judge them against the bar, and append the ones that survive — in the README's existing table
-format. The point of the list is *differentiation*, not coverage: a skill that just recites best
-practices the base model already follows does **not** belong here.
+Keep this repo's curated `README.md` fresh. The repo is scoped to **motion, animation, and UI
+design skills only** — a deliberate vertical. When invoked, go find skills *in that lane* worth
+listing, judge them against the bar, and append the survivors in the README's existing table
+format. The point is *differentiation and depth within the niche*, not coverage: a skill that just
+recites motion/design best practices the base model already follows does **not** belong here, and a
+skill outside motion/design (testing, MCP, data, etc.) is **out of scope** — note it and move on.
 
 ## The quality bar (apply ruthlessly — most candidates fail it)
 
@@ -29,9 +31,10 @@ duplicates of something already listed, and anything you can't verify has a real
 
 Create a todo per step and work through them in order.
 
-1. **Scope.** If the user named a niche ("motion", "MCP", "testing"), hunt there. Otherwise do a
-   general sweep. Read the current `README.md` first so you know what's already listed and what the
-   "Leads to triage" queue holds.
+1. **Scope.** Stay within motion / animation / UI design. If the user named a sub-area ("mobile
+   motion", "design tokens", "GSAP"), hunt there; otherwise sweep the repo's existing categories.
+   Read the current `README.md` first so you know what's already listed and what the "scout's
+   queue" items hold. Anything outside motion/design is out of scope.
 2. **Search broad, from several angles.** Run multiple web searches — GitHub repos, skill
    marketplaces/directories, "awesome claude skills" collections, and the specific niche. Also
    resolve items already sitting in the README's "Leads to triage" section.

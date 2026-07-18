@@ -4,9 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A **curated collection of Claude Code / Agent Skills** — a personal, opinionated shelf of skills
-worth using, kept in `README.md`. There is **no application code**, build, test, or run step. The
-deliverable is the curated list and the one skill that maintains it.
+A **curated index of Claude Code / Agent Skills for motion, animation, and UI design** — one
+deliberate vertical, kept in `README.md`. There is **no application code**, build, test, or run
+step. The deliverable is the curated list and the one skill that maintains it.
+
+Scope is intentionally **motion & design only**. The differentiation vs a broad "AI-for-UI" list
+(which carries a shallow design subsection) is *depth within the niche* + auto-maintenance — not
+breadth. Keep out-of-lane skills (testing, MCP, data, etc.) off the list.
 
 ## Structure
 

@@ -1,39 +1,44 @@
-# Awesome Claude Skills — a curated collection
+# Awesome Motion & Design Skills
 
-A personal, opinionated shelf of **Claude Code / Agent Skills worth stealing** — the ones that are
-actually differentiated, not the ones a strong base model already does on its own.
+The **deep, opinionated index of Claude Code / Agent Skills for motion, animation, and UI design** —
+one vertical, done thoroughly. General "AI-for-UI" lists (e.g. [maxbogo/awesome-ai-tools-for-ui](https://github.com/maxbogo/awesome-ai-tools-for-ui))
+carry a shallow design subsection across many categories; this repo does *only* motion & design, so
+it can go deeper — full sub-taxonomy, honest annotations, and a differentiation verdict per entry.
 
-Maintained semi-automatically: the [`skill-scout`](./skill-scout/SKILL.md) skill in this repo does
-the legwork — it web-researches new skills, checks them against a quality bar, dedupes against this
-list, and appends the survivors. Run it whenever you want to top up the shelf.
+Maintained semi-automatically by [`skill-scout`](./skill-scout/SKILL.md): it web-researches motion/
+design skills, checks them against the bar, dedupes, and appends the survivors. Run it to top up.
 
 ## The bar for getting listed
 
-A skill earns a row only if it clears at least one of these — otherwise it's just knowledge the
-model already has:
+Motion/design knowledge alone is cheap — a strong base model already writes decent animations. A
+skill earns a row only if it clears at least one:
 
-- **Official / library-author** — shipped by the people who own the underlying tool (highest trust).
-- **Proprietary or live** — pulls in current docs, private systems, or data the model can't have baked in.
-- **Enforcement, not knowledge** — encodes *your* specific constraints/tokens and gates on them, rather than reciting best practices.
-- **Genuinely non-obvious depth** — gotchas, edge cases, or taste a base model reliably gets wrong.
+- **Official / library-author** — shipped by whoever owns the tool (Motion.dev, Software Mansion…). Highest trust.
+- **Live / current** — pulls in up-to-date APIs, examples, or measured perf the model can't have baked in.
+- **Enforcement, not knowledge** — encodes and *gates on* specific design tokens/constraints.
+- **Non-obvious depth** — documented gotchas, edge cases, or taste a base model reliably gets wrong.
 
-> Skills whose only value is "remind the model of best practices it mostly knows" are on a
-> depreciating curve as models improve. This list tries to avoid them.
+Each row is annotated honestly, including "overlaps the base model — borderline" where true.
 
-## Motion & animation (web)
+## Web animation (Motion / Framer / GSAP / scroll)
 
 | Skill | What it's for | Source |
 |-------|---------------|--------|
 | Motion.dev animations | 120fps Motion.dev — spring physics, scroll effects, gesture interactions | [199-biotechnologies/motion-dev-animations-skill](https://github.com/199-biotechnologies/motion-dev-animations-skill) |
 | animate-skill | Next.js/React animations built on Emil Kowalski's course rules | [delphi-ai/animate-skill](https://github.com/delphi-ai/animate-skill) |
-| claudedesignskills | 3D/WebGL/GSAP/R3F/Motion/Lottie collection for richer web visuals | [freshtechbro/claudedesignskills](https://github.com/freshtechbro/claudedesignskills) |
 | css-animation-skill | Self-contained HTML/CSS animations for walkthroughs, demos, onboarding | [neonwatty/css-animation-skill](https://github.com/neonwatty/css-animation-skill) |
 
-## Mobile / React Native
+## Mobile / React Native motion
 
 | Skill | What it's for | Source |
 |-------|---------------|--------|
 | Software Mansion skills | **Official**, from the authors of Reanimated & Gesture Handler — RN animation, gestures, layout transitions | [software-mansion-labs/skills](https://github.com/software-mansion-labs/skills) |
+
+## 3D / WebGL / rich visuals
+
+| Skill | What it's for | Source |
+|-------|---------------|--------|
+| claudedesignskills | 3D/WebGL/GSAP/R3F/Motion/Lottie collection for richer web visuals | [freshtechbro/claudedesignskills](https://github.com/freshtechbro/claudedesignskills) |
 
 ## Frontend design / anti-slop
 
@@ -41,34 +46,30 @@ model already has:
 |-------|---------------|--------|
 | Frontend Design | **Official (Anthropic)** — forces deliberate aesthetic choices, bans overused fonts (Inter/Roboto/…) | [anthropics/skills](https://github.com/anthropics/skills) · [blog](https://claude.com/blog/improving-frontend-design-through-skills) |
 
-## Design tokens & handoff
+## Design systems, tokens & handoff
 
-_(seed row — expand with `skill-scout`)_
+_(scout's queue — verify sources before listing)_
 
-| Skill | What it's for | Source |
-|-------|---------------|--------|
-| Design token skills | Generate a global/alias/component token taxonomy before building components | see leads below |
-
-## Collections & directories (worth mining)
-
-- [Best Claude Code Skills to Try in 2026 — Firecrawl](https://www.firecrawl.dev/blog/best-claude-code-skills)
-- [42 Claude Design Skills That Kill AI Slop — Novitckii](https://novitckii.com/resources/claude-design-skills/)
-
-## Leads to triage
-
-Names seen in the wild but not yet verified/linked — the scout's queue:
-
-- **Frontend UI Animator** — React motion auditing & staggered/scroll reveals
-- **Web Design Guidelines** — audits UI code against 100+ a11y/perf/UX rules
-- **Design Token Architect** — token taxonomy skill
+- **Design Token Architect** — global/alias/component token taxonomy
 - **Claude Design** (handoff) — reads your codebase's tokens/Radix/Tailwind and emits a build spec
+
+## Motion principles / taste
+
+_(scout's queue)_
+
+- **Frontend UI Animator** — React motion auditing, staggered/scroll reveals
+- **Web Design Guidelines** — audits UI code against 100+ a11y/perf/UX rules
+
+## Collections worth mining (for the scout)
+
+- [42 Claude Design Skills That Kill AI Slop — Novitckii](https://novitckii.com/resources/claude-design-skills/)
+- [Best Claude Code Skills 2026 — Firecrawl](https://www.firecrawl.dev/blog/best-claude-code-skills)
 
 ## How this repo is maintained
 
-This is a curation repo — **no application code**. Adding entries is a research task, so it's driven
-by a skill rather than by hand. See [`skill-scout/SKILL.md`](./skill-scout/SKILL.md).
+A curation repo scoped to **motion & design skills only** — no application code. Adding entries is a
+research task, so it's driven by [`skill-scout`](./skill-scout/SKILL.md) rather than by hand.
 
-<sub>History note: this repo previously held a pack of UX-motion skills. That content proved largely
-redundant — the base model already knows it and stronger tools (e.g. Software Mansion's official RN
-skills) own the differentiated lanes — so it was retired in favor of this curated shelf. The old
-pack lives in git history.</sub>
+<sub>History note: this repo previously shipped its own UX-motion skill pack. That proved redundant
+(the base model already covers it; stronger tools own the lanes), so it became a curated index
+instead. The old pack lives in git history.</sub>
